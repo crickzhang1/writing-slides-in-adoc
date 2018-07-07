@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+for adoc in $*
+do
+    echo "Converting adoc file: " $adoc
+    bundle exec asciidoctor-revealjs $adoc
+    if [ $? == 0 ]
+    then
+        echo "    Conversion done."
+    else
+        echo "    Conversion failed."
+    fi
+done

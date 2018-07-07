@@ -1,0 +1,50 @@
+= Wrting Slides with Asciidoctor-Revealjs: In An Easy Way
+Yinhe Zhang <crickzhang1@gmail.com>
+:revdate: 07.07.2018
+:icons: font
+:source-highlighter: highlightjs
+:imagesdir: images
+//:title-slide-background-image: title-bg.jpg
+//:title-slide-transition: zoom
+//:title-slide-transition-speed: fast
+:revealjs_theme: solarized
+:revealjs_progress: true
+:revealjs_slideNumber: true
+:revealjs_transition: slide
+:revealjs_backgroundTransition: fade
+:description:
+:keywords: Slide, Asciidoctor, Revealjs
+== Why Asciidoctor-Revealjs
+
+[%step]
+* Writing in simple `adoc` syntax as my daily notes/articles.
+** Easily convert my notes to presentation. :)
+* Combined power of _revealjs_ for many presentating convenience.
+* Convertable to `.html`, viewable everywhere there is a browser.
+** Thanks to _revealjs_, the result is slides in `html`, compatible on every device.
+
+== First Glance
+
+* Two level of structure. [_If there are more, re-think if it's overstaffed? :)_]
+** `==` for first level sections (_horizontal navigatable_: LEFT/RIGHT direction keys)
+** `===` for subsections (_vertial navigatable_: UP/DOWN direction keys)
+* What you can write in Asciidoctor, you can write in slides.
+
+=== Subsections Shown Vertically
+
+Subsections may be navigated with UP/DOWN keys.
+
+== Note for Speaker
+
+[source]
+----
+[NOTE.speaker]
+--
+This note could only be seen by speaker.
+--
+----
+
+[NOTE.speaker]
+--
+This note could only be seen by speaker.
+--

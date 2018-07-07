@@ -1,0 +1,6 @@
+reveal.js/
+node_modules/
+package-lock.json
+.bundle/
+Gemfile.lock
+*.html
