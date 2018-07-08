@@ -4,3 +4,4 @@ package-lock.json
 .bundle/
 Gemfile.lock
 *.html
+index.*

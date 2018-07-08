@@ -1,40 +1,54 @@
-.PHONY: test clean install-ruby all httpd
+.PHONY: test clean install-ruby all httpd FORCE
 
-all:
-	@make clean
+all: clean
 	@./rubyconvert *.adoc
+	@make index
 
 test:
 	-@rm -f presentation.html
-	make presentation.html
+	@make presentation.html
+
+%.adoc: FORCE
+	@./rubyconvert $@
 
 %.html: %.adoc
-	@make clean
 	@./rubyconvert $<
 
-httpd:
+httpd: index
 	@./rubyhttpd
 
 clean:
-	-@rm -f *.html
+	-@rm -f *.html index.adoc
+
+FORCE:
 
 install-ruby:
-	echo "Import public key"
+	@echo "Import public key"
 	# Directly import since on Debian 9 gpg2 has a bug failing with key-server
 	command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-	echo "Install rvm and ruby"
-	\curl -sSL https://get.rvm.io | bash -s stable --ruby
-	grep ".rvm/scripts/rvm" ~/.bashrc 1>/dev/null 2>&1
-	if [ $? == 1 ]\
-	then\
-	    echo "source ~/.rvm/scripts/rvm" > ~/.bashrc\
+	@echo "Install rvm and ruby"
+	@\curl -sSL https://get.rvm.io | bash -s stable --ruby
+	@grep ".rvm/scripts/rvm" ~/.bashrc 1>/dev/null 2>&1
+	@if [ $? == 1 ]; then \
+	    echo "source ~/.rvm/scripts/rvm" > ~/.bashrc; \
 	fi
-	echo "Installing bundler and asciidoctor-revealjs"
-	gem install bundler
-	make install-bundle
+	@echo "Installing bundler and asciidoctor-revealjs"
+	@gem install bundler
+	@make install-bundle
 
 install-bundle:
-	bundle config --local github.https true
-	bundle --path=.bundle/gems --binstubs=.bundle/.bin
-	echo "Cloning Reveal.js"
-	git clone -b 3.6.0 --depth 1 https://github.com/hakimel/reveal.js.git
+	@echo "Bundle installing packages."
+	@bundle config --local github.https true
+	@bundle --path=.bundle/gems --binstubs=.bundle/.bin
+	@echo "Cloning Reveal.js"
+	@if [ ! -d reveal.js ]; then \
+	    git clone -b 3.6.0 --depth 1 https://github.com/hakimel/reveal.js.git; \
+	else \
+	    echo "    Already cloned. Skipping it."; \
+	fi
+
+index: FORCE
+	@echo "Generating index.html."
+	-@rm -f index.adoc index.html
+	@./generateindex
+	@bundle exec asciidoctor index.adoc

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+rm -f index.adoc 1>/dev/null 2>&1
+
+DOCS=`echo *.adoc`
+
+echo "= Index of Presentations" > index.adoc
+
+echo "" >> index.adoc
+
+echo "== Presetations" >> index.adoc
+
+echo "" >> index.adoc
+
+for doc in $DOCS
+do
+    HEADING=`head -1 $doc | cut -d" " -f 2-`;
+    BASENAME=`basename -s .adoc $doc`;
+    echo "* link:$BASENAME.html[$HEADING]" >> index.adoc;
+done
