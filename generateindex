@@ -16,5 +16,5 @@ for doc in $DOCS
 do
     HEADING=`head -1 $doc | cut -d" " -f 2-`;
     BASENAME=`basename -s .adoc $doc`;
-    echo "* link:$BASENAME.html[$HEADING]" >> index.adoc;
+    echo "* link:$BASENAME.html[$HEADING, window="_blank"]" >> index.adoc;
 done

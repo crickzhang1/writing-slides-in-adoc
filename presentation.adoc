@@ -14,14 +14,15 @@ Yinhe Zhang <crickzhang1@gmail.com>
 :revealjs_backgroundTransition: fade
 :description:
 :keywords: Slide, Asciidoctor, Revealjs
+:data-uri:
 
 == Why Asciidoctor-Revealjs
 
 [%step]
-* Writing in simple `adoc` syntax as my daily notes/articles.
+* Writing in simple `adoc` syntax (https://asciidoctor.org/docs/asciidoc-syntax-quick-reference[AsciiDoc Syntax Quick Ref, window="_blank"]) as my daily notes/articles.
 ** Easily convert my notes to presentation. :)
 * Combined power of _revealjs_ for many presentating convenience.
-* Convertable to `.html`, viewable everywhere there is a browser.
+* Convertable to `.html`, viewable everywhere there is a https://browsehappy.com[modern^] browser.
 ** Thanks to _revealjs_, the result is slides in `html`, compatible on every device.
 
 == First Glance
