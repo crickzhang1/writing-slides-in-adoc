@@ -24,13 +24,16 @@ install-ruby:
 	command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 	echo "Install rvm and ruby"
 	\curl -sSL https://get.rvm.io | bash -s stable --ruby
-	grep ".rvm/scripts/rvm" .bashrc 1>/dev/null 2>&1
+	grep ".rvm/scripts/rvm" ~/.bashrc 1>/dev/null 2>&1
 	if [ $? == 1 ]\
 	then\
-	    echo "source ~.rvm/scripts/rvm"\
+	    echo "source ~/.rvm/scripts/rvm" > ~/.bashrc\
 	fi
 	echo "Installing bundler and asciidoctor-revealjs"
 	gem install bundler
+	make install-bundle
+
+install-bundle:
 	bundle config --local github.https true
 	bundle --path=.bundle/gems --binstubs=.bundle/.bin
 	echo "Cloning Reveal.js"
