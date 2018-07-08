@@ -1,18 +1,15 @@
 .PHONY: test clean install-ruby all httpd FORCE
 
-all: clean
+all: clean index
 	@./rubyconvert *.adoc
-	@make index
 
-test:
-	-@rm -f presentation.html
-	@make presentation.html
+test: clean presentation.html
 
 %.adoc: FORCE
 	@./rubyconvert $@
 
-%.html: %.adoc
-	@./rubyconvert $<
+%.html: FORCE
+	@./rubyconvert $*.adoc
 
 httpd: index
 	@./rubyhttpd

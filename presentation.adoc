@@ -1,6 +1,6 @@
 = Wrting Slides with Asciidoctor-Revealjs: In An Easy Way
 Yinhe Zhang <crickzhang1@gmail.com>
-:revdate: 07.07.2018
+:revdate: 07.09.2018
 :icons: font
 :source-highlighter: highlightjs
 :imagesdir: images
@@ -15,6 +15,8 @@ Yinhe Zhang <crickzhang1@gmail.com>
 :description:
 :keywords: Slide, Asciidoctor, Revealjs
 :data-uri:
+
+2018-07-09
 
 == Why Asciidoctor-Revealjs
 

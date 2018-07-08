@@ -2,7 +2,7 @@
 
 rm -f index.adoc 1>/dev/null 2>&1
 
-DOCS=`echo *.adoc`
+DOCS=`echo *.adoc | sed -e 's/index.adoc//g'`
 
 echo "= Index of Presentations" > index.adoc
 
